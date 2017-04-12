@@ -1,0 +1,13 @@
+﻿@model Domain.Organization.Shiping
+@{
+    ViewBag.Title = "Compited";
+}
+
+<h2>Thanks</h2>
+
+@foreach (var item in Model.ShippingId)
+{
+    <p>Thanks. Your order № @Model.ShippingId</p>
+}
+
+

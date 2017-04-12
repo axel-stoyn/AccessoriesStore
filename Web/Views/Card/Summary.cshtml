@@ -1,0 +1,13 @@
+﻿@model Domain.Organization.Card
+
+<div class="navbar-right">
+    @Html.ActionLink("Order", "Index", "Card",
+    new { returnUrl = Request.Url.PathAndQuery },
+    new { @class = "btn btn-default navbar-btn" })
+</div>
+
+<div class="navbar-text navbar-right">
+    <b>Ваша корзина:</b>
+    @Model.Cards.Sum(x => x.Quantity) accessories,
+    @Model.TotalCost().ToString("# $")
+</div>

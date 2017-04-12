@@ -1,0 +1,21 @@
+﻿@*@model Domain.Organization.Accessory*@
+@*@using Domain.Organization
+@model IEnumerable<Accessory>*@
+@using Web.Models
+@using Web.Helpers
+@model AccessoriesList
+
+
+@{
+    ViewBag.Title = "Accessories";
+}
+
+@foreach (var p in @Model.Accessories)
+{
+    @Html.Partial("Summary", p)
+}
+
+<div>
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("List", new { page = x, cathegory = Model.Category }))
+</div>
+

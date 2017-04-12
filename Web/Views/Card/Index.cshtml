@@ -1,0 +1,59 @@
+﻿@model Web.Models.CardToBye
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<style>
+    #card td {
+    vertical-align: middle;
+    }
+</style>
+
+<table id="card" class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Accessory</th>
+            <th class="text-right">Cost</th>
+            <th class="text-right">Total Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Card.Cards)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Accessory.Name</td>
+                <td class="text-right">@line.Accessory.Cost.ToString("# USA")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Accessory.Cost).ToString("# USA"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Card"))
+                    {
+                        @Html.Hidden("AccessoryId", line.Accessory.AccessoryId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning" type="submit" value="Delite" />
+                    } 
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total Cost:</td>
+            <td class="text-right">
+                @Model.Card.TotalCost().ToString("# USA")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue</a>
+    @Html.ActionLink("Order", "Order", null, new { @class = "btn btn-primary" })
+</div>
+

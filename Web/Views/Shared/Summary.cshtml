@@ -1,0 +1,19 @@
+﻿@model Domain.Organization.Accessory
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">@Model.Cost.ToString("# USA")</span>
+    </h3>
+
+    @using (Html.BeginForm("AddToCard", "Card"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.AccessoryId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to Card" />
+        </div>
+    }
+
+    <span class="lead">@Model.Description</span>
+</div>
