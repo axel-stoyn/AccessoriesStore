@@ -20,7 +20,7 @@ namespace Domain.Organization
         public string ServerName = "smtp.example.com";
         public int ServerPort = 587;
         public bool WriteAsFile = true;
-        public string FileLocation = @"c:\accessories";
+        public string FileLocation = @"c:\accessories\"; // obsolute catalog
     }
 
     public class EmailOrder : IOrder

@@ -17,7 +17,7 @@ namespace Web.Controllers
         //}
 
         private IAccessory repository;
-        public int pageSize = 2;
+        public int pageSize = 10;
 
         public AccessoryController(IAccessory repo)
         {
@@ -29,7 +29,8 @@ namespace Web.Controllers
             AccessoriesList list = new AccessoriesList
             {
                 Accessories = repository.Accessories
-                .OrderBy(a => a.AccessoryId)
+                .Where(a => cathegory == null || a.Cathegory == cathegory)
+                .OrderBy(access => access.AccessoryId)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize),
                 PageInfo = new PageInfo

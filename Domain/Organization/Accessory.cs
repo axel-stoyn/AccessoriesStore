@@ -12,6 +12,6 @@ namespace Domain.Organization
         public decimal Cost { get; set; }
         public string Description { get; set; }
         public string Cathegory { get; set; }
-        
+        //public byte[] ImageData { get; set; }
     }
 }
