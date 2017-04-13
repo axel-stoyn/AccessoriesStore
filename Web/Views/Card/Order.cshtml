@@ -6,18 +6,18 @@
 }
 
 <h2>Order</h2>
-<p>Please, complete this form</p>
+<p>Please, enter your details</p>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary();
     <div class="form-group">
-        <label>Your name:</label>
+        <label>Please enter a name</label>
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        <label>Your adress:</label>
+        <label>Please enter address:</label>
         @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
     </div>
 

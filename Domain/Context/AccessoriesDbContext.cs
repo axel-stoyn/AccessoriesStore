@@ -10,5 +10,6 @@ namespace Domain.Context
     public class AccessoriesDbContext : DbContext
     {
         public DbSet<Accessory> Accessories { get; set; }
+        //public DbSet<Shiping> Shipping { get; set; }
     }
 }

@@ -13,14 +13,14 @@ namespace Domain.Organization
     public class EmailSettings
     {
         public string MailToAddress = "orders@example.com";
-        public string MailFromAddress = "gamestore@example.com";
+        public string MailFromAddress = "accessoriesstore@example.com";
         public bool UseSsl = true;
         public string Username = "MySmtpUsername";
         public string Password = "MySmtpPassword";
         public string ServerName = "smtp.example.com";
         public int ServerPort = 587;
         public bool WriteAsFile = true;
-        public string FileLocation = @"c:\accessories_store_emails";
+        public string FileLocation = @"c:\accessories";
     }
 
     public class EmailOrder : IOrder
@@ -67,6 +67,9 @@ namespace Domain.Organization
                     .AppendLine("---")
                     .AppendLine("Delivery:")
                     .AppendLine(shiping.Name)
+                    .AppendLine(shiping.Adress)
+                    //.AppendLine(shiping.Date)
+                    .AppendLine(shiping.ShippingId)
                     .AppendLine("---");
 
                 MailMessage mailMessage = new MailMessage(

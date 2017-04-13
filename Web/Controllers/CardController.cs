@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract;
+using Domain.Context;
 using Domain.Organization;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Web.Controllers
 {
     public class CardController : Controller
     {
+        private AccessoriesDbContext db = new AccessoriesDbContext();
         private IAccessory repository;
         private IOrder order;
         public CardController(IAccessory repo, IOrder ord)
@@ -60,6 +62,19 @@ namespace Web.Controllers
             return View(new Shiping());
         }
 
+        //[HttpPost]
+        //public string Order(Shiping shiping)
+        //{
+        //    shiping.Date = DateTime.Now;
+        //    db.Shipping.Add(shiping);
+        //    db.SaveChanges();
+        //    return ("Thanks," + shiping.Name + "," + shiping.Date);
+        //}
+        //public string Bye(Shiping shiping)
+        //{
+        //    shiping.Adress = DateTime.Now;
+            
+        //}
         [HttpPost]
         public ViewResult Order(Card card, Shiping shiping)
         {
@@ -69,6 +84,8 @@ namespace Web.Controllers
             }
             if(ModelState.IsValid)
             {
+                //db.Shipping.Add(shiping);
+                //db.SaveChanges();
                 order.ProcessOrder(card, shiping);
                 card.Delite();
                 return View("Completed");
