@@ -30,6 +30,7 @@ namespace Web.Controllers
             });
         }
 
+        //Add Items to card (basket)
         public RedirectToRouteResult AddToCard(Card card, int accessoryId, string returnUrl)
         {
             Accessory accessory = repository.Accessories.FirstOrDefault(g => g.AccessoryId == accessoryId);
@@ -41,6 +42,7 @@ namespace Web.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        //Delete Items to card (basket)
         public RedirectToRouteResult RemoveFromCart(Card card, int accessoryId, string returnUrl)
         {
             Accessory accessory = repository.Accessories.FirstOrDefault(g => g.AccessoryId == accessoryId);
@@ -57,24 +59,12 @@ namespace Web.Controllers
             return PartialView(card);
         }
 
+        //Order Items with card (basket)
         public ViewResult Order()
         {
             return View(new Shiping());
         }
 
-        //[HttpPost]
-        //public string Order(Shiping shiping)
-        //{
-        //    shiping.Date = DateTime.Now;
-        //    db.Shipping.Add(shiping);
-        //    db.SaveChanges();
-        //    return ("Thanks," + shiping.Name + "," + shiping.Date);
-        //}
-        //public string Bye(Shiping shiping)
-        //{
-        //    shiping.Adress = DateTime.Now;
-            
-        //}
         [HttpPost]
         public ViewResult Order(Card card, Shiping shiping)
         {
@@ -84,8 +74,6 @@ namespace Web.Controllers
             }
             if(ModelState.IsValid)
             {
-                //db.Shipping.Add(shiping);
-                //db.SaveChanges();
                 order.ProcessOrder(card, shiping);
                 card.Delite();
                 return View("Completed");
@@ -95,15 +83,17 @@ namespace Web.Controllers
                 return View(shiping);
             }
         }
-        //public Card GetCart()
-        //{
-        //    Card card = (Card)Session["ByeCard"];
-        //    if (card == null)
-        //    {
-        //        card = new Card();
-        //        Session["ByeCard"] = card;
-        //    }
-        //    return card;
-        //}
+
+        //Search concrete item. Don't work
+        [HttpPost]
+        public ActionResult Search(string name)
+        {
+            var accessories = db.Accessories.Where(t => t.Name.Contains(name)).ToList();
+            if (accessories.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(accessories);
+        }
     }
 }

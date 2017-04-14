@@ -3,13 +3,20 @@
 @Html.ActionLink("Home", "List", "Accessory", null,
     new { @class = "btn btn-block btn-default btn-lg" })
 
-@foreach (var l in Model)
-{
-    @Html.RouteLink(l, new
-{
-    controller = "Accessory", action = "List", category = l, page = 1
-}, new { @class = "btn btn-block btn-default btn-lg" + (l == ViewBag.SelectedCategory ? " btn-primary" : "") })
-}
+@foreach (var line in Model)
+    {
+        @Html.RouteLink(line, new
+        {
+            controller = "Accessory",
+            action = "List",
+            category = line,
+            page = 1
+        }, new
+        {
+            @class = "btn btn-block btn-default btn-lg"
+                + (line == ViewBag.SelectedCategory ? " btn-primary" : "")
+        })
+    }
 
 
 

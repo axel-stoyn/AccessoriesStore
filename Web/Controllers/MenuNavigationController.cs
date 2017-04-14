@@ -15,7 +15,8 @@ namespace Web.Controllers
         {
             repository = repo;
         }
-        // GET: MenuNavigation
+
+        // Menu Navigation for Main List
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;

@@ -11,10 +11,10 @@ namespace Domain.Organization
         [Display(Name = "Order")]
         public string ShippingId { get; set; }
 
-        [Required(ErrorMessage = "Name")]
+        [Required(ErrorMessage = "Enter your name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Adress")]
+        [Required(ErrorMessage = "Enter your address")]
         public string Adress { get; set; }
 
         public DateTime Date { get; set; }

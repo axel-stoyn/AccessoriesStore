@@ -10,11 +10,6 @@ namespace Web.Controllers
 {
     public class AccessoryController : Controller
     {
-        //// GET: Accessory
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         private IAccessory repository;
         public int pageSize = 10;
@@ -24,6 +19,7 @@ namespace Web.Controllers
             repository = repo;
         }
 
+        //List Accessories with pages and sort
         public ViewResult List(string cathegory, int page = 1)
         {
             AccessoriesList list = new AccessoriesList

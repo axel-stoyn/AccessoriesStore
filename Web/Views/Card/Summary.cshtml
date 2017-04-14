@@ -7,7 +7,7 @@
 </div>
 
 <div class="navbar-text navbar-right">
-    <b>Ваша корзина:</b>
+    <b>Your orders:</b>
     @Model.Cards.Sum(x => x.Quantity) accessories,
     @Model.TotalCost().ToString("# $")
 </div>

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Domain.Organization.Accessory>
+
+<div id="searchresults">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Name, @item.Description, @item.Cost</li>
+        }
+    </ul>
+</div>

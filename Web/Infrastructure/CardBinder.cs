@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Web.Infrastructure
 {
+    //Session key for user
     public class CardBinder : IModelBinder
     {
         private const string sessionKey = "Card";

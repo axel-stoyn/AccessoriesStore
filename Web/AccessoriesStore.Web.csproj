@@ -184,7 +184,6 @@
     <Compile Include="Controllers\AccessoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CardController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuNavigationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,9 +236,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home1\About.cshtml" />
+    <Content Include="Views\Home1\Contact.cshtml" />
+    <Content Include="Views\Home1\Index.cshtml" />
     <Content Include="Views\Accessory\List.cshtml" />
     <Content Include="Views\MenuNavigation\Menu.cshtml" />
     <Content Include="Views\Shared\Summary.cshtml" />
@@ -252,6 +251,7 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Card\Search.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

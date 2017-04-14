@@ -36,20 +36,13 @@ namespace Web.Infrastructure
         {
             kernel.Bind<IAccessory>().To<AccessoriesRepository>();
 
+            //Send order on email or derectory .eml file 
             EmailSettings email = new EmailSettings
             {
                 WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
             };
 
             kernel.Bind<IOrder>().To<EmailOrder>().WithConstructorArgument("settings", email);
-            //Mock<IAccessory> mock = new Mock<IAccessory>();
-            //mock.Setup(m => m.Accessories).Returns(new List<Accessory>
-            //{
-            //    new Accessory { Name = "Trinket", Cost = 1499 },
-            //    new Accessory { Name = "Chain", Cost=2299 },
-            //    new Accessory { Name = "Brangle", Cost=899.4M }
-            //});
-            //kernel.Bind<IAccessory>().ToConstant(mock.Object);
         }
     }
 }

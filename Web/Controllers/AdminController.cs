@@ -21,7 +21,9 @@ namespace Web.Controllers
         {
             repository = repo;
         }
+
         // GET: Admin
+        //CRUD in controller for admin panel
         public ViewResult Index()
         {
             return View(repository.Accessories);
@@ -76,7 +78,7 @@ namespace Web.Controllers
             }
             var accessoriesToUpdate = db.Accessories.Find(id);
             if (TryUpdateModel(accessoriesToUpdate, "",
-               new string[] { "Name", "Cost", "Cathegory", "Discription" }))
+               new string[] { "Name", "Cost", "Description", "Cathegory" }))
             {
                 try
                 {
